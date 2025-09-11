@@ -1,0 +1,13 @@
+# Virtual Environment
+venv/
+__pycache__/
+
+# Environment variables
+.env
+
+# IDE/Editor specific
+.vscode/
+.idea/
+
+# OS specific
+.DS_Store
