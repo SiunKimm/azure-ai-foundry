@@ -1,5 +1,8 @@
+
+print("=== preprocess.py 실행 시작 ===")
 import pandas as pd
 import json
+import numpy as np
 
 def parse_hospital_guidelines(filepath):
     df = pd.read_excel(filepath, header=None)
@@ -69,9 +72,23 @@ def parse_hospital_guidelines(filepath):
 
     return structured_data
 
+def convert_nan_to_none(data):
+    """NaN 값을 None으로 변환하는 함수"""
+    if isinstance(data, dict):
+        return {key: convert_nan_to_none(value) for key, value in data.items()}
+    elif isinstance(data, list):
+        return [convert_nan_to_none(item) for item in data]
+    elif pd.isna(data):
+        return None
+    else:
+        return data
+
 # 코드 실행
 file_to_process = 'data/Azure_DataSet.xlsx'
 parsed_data = parse_hospital_guidelines(file_to_process)
+
+# NaN 값을 None으로 변환
+parsed_data = convert_nan_to_none(parsed_data)
 
 # JSON 파일로 저장
 output_file = 'output/preprocessed_data.json'
@@ -82,3 +99,4 @@ print(f"데이터가 {output_file}에 저장되었습니다.")
 
 # 콘솔 결과 출력
 print(json.dumps(parsed_data, indent=2, ensure_ascii=False))
+print("=== preprocess.py 실행 종료 ===")
