@@ -1,0 +1,9 @@
+# 데이터 처리 및 분석
+pandas>=2.0.0
+
+# Excel 파일 처리 엔진 (pandas에서 Excel 파일 읽기에 필요)
+openpyxl>=3.1.0
+
+# 내장 모듈들 (설치 불필요)
+# json - Python built-in module
+# re - Python built-in module

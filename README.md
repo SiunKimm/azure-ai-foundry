@@ -1,14 +1,24 @@
-# azure-ai-foundry
- 
-## 프로젝트 환경 설정
+# Azure AI Foundry
 
-1. Python 가상환경 생성
-	```zsh
-	python3 -m venv venv
-	source venv/bin/activate
-	```
+## 환경 설정
 
-2. 필수 패키지 설치
-	```zsh
-	pip install pandas python-dotenv azure-search-documents openai
-	```
+### 1. 가상환경 생성 및 활성화
+```bash
+# macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+
+# Windows
+python -m venv venv
+venv\Scripts\activate
+```
+
+### 2. 패키지 설치
+```bash
+pip install -r requirements.txt
+```
+
+### 3. 실행
+```bash
+python src/preprocess-final.py
+```
